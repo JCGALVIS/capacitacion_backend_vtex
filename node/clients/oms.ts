@@ -1,27 +1,28 @@
-import { InstanceOptions, IOContext, JanusClient } from "@vtex/api"
+import type { InstanceOptions, IOContext } from '@vtex/api'
+import { JanusClient } from '@vtex/api'
 
-const basePath = "/api/oms/pvt"
+const basePath = '/api/oms/pvt'
 
-export default class OMS extends JanusClient{
-  constructor(context: IOContext, options?: InstanceOptions){
+export default class OMS extends JanusClient {
+  constructor(context: IOContext, options?: InstanceOptions) {
     super(context, {
       ...options,
       headers: {
         ...options?.headers,
         VtexIdclientAutCookie: context.authToken,
-      }
+      },
     })
   }
 
   public async getOrders(): Promise<any> {
     return this.http.get(this.routes.getOrders(), {
-      metric: "get-orders"
+      metric: 'get-orders',
     })
   }
 
   public async getOrderById(orderId: string): Promise<any> {
     return this.http.get(this.routes.getOrderById(orderId), {
-      metric: "get-orders-by-id"
+      metric: 'get-orders-by-id',
     })
   }
 
@@ -32,9 +33,7 @@ export default class OMS extends JanusClient{
       },
       getOrderById: (orderId: string) => {
         return `${basePath}/orders${orderId}`
-      }
+      },
     }
   }
 }
-
-
