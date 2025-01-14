@@ -19,6 +19,12 @@ export default class OMS extends JanusClient{
     })
   }
 
+  public async getOrderById(orderId: string): Promise<any> {
+    return this.http.get(this.routes.getOrderById(orderId), {
+      metric: "get-orders-by-id"
+    })
+  }
+
   private get routes() {
     return {
       getOrders: () => {
