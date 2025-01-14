@@ -9,7 +9,7 @@ export class Clients extends IOClients {
     return this.getOrSet('status', Status)
   }
 
-  public get OMS() {
-    return this.getOrSet('OMS', OMS)
+  public get oms() {
+    return this.getOrSet('oms', OMS)
   }
 }
