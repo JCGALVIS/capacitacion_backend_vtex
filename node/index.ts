@@ -5,6 +5,7 @@ import { Clients } from './clients'
 import { status } from './middlewares/status'
 import { validate } from './middlewares/validate'
 import { getOrders } from './middlewares/oms/getOrders'
+import { orders } from './resolvers/oms/oms'
 
 const TIMEOUT_MS = 800
 
@@ -34,6 +35,13 @@ declare global {
 
 export default new Service({
   clients,
+  graphql: {
+    resolvers: {
+      Query: {
+        orders,
+      },
+    },
+  },
   routes: {
     status: method({
       GET: [validate, status],

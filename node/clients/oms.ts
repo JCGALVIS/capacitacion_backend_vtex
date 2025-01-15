@@ -9,7 +9,7 @@ export default class OMS extends JanusClient {
       ...options,
       headers: {
         ...options?.headers,
-        VtexIdclientAutCookie: context.authToken,
+        VtexIdclientAutCookie: context.adminUserAuthToken ?? context.authToken,
       },
     })
   }

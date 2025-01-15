@@ -9,7 +9,8 @@
   "dependencies": {},
   "builders": {
     "node": "7.x",
-    "docs": "0.x"
+    "docs": "0.x",
+    "graphql": "1.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"
@@ -24,10 +25,30 @@
       }
     },
     {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "portal.vtexcommercestable.com.br",
+        "path": "*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.vtex.com",
+        "path": "/api/*"
+      }
+    },
+    {
       "name": "colossus-fire-event"
     },
     {
       "name": "colossus-write-logs"
+    },
+    {
+      "name": "ADMIN_DS"
+    },
+    {
+      "name": "OMSViewer"
     }
   ],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"

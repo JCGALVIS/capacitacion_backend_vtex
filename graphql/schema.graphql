@@ -1,0 +1,25 @@
+input OrderInput {
+  orderId: String!
+}
+
+type Order {
+  orderId: String
+  status: String
+  statusDescription: String
+  items: [OrderItemDetail]
+}
+
+type OrderItemDetail {
+  uniqueId: String
+  id: String
+  productId: String
+  ean: String
+  name: String
+  refId: String
+  price: Int
+  quantity: Int
+}
+
+type Query {
+  orders: [OrderItemDetail]
+}

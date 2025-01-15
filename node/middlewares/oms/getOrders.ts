@@ -1,6 +1,10 @@
+import type { OrderDetailResponse } from '../../node_modules/@vtex/clients/build/typings/oms.d'
 import { omsService } from '../../services/omsService'
 
-export async function getOrders(ctx: Context, next: () => Promise<any>) {
+export async function getOrders(
+  ctx: Context,
+  next: () => Promise<OrderDetailResponse>
+) {
   try {
     const response = await omsService(ctx).getOrders()
 
