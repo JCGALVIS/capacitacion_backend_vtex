@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Refunds",
+  "properties": {
+    "first_name": {
+      "description": "Customer name",
+      "type": "string"
+    },
+    "last_name": {
+      "description": "Customer last name",
+      "type": "string"
+    },
+    "customer_id": {
+      "description": "Customer id",
+      "type": "number"
+    },
+    "order_id": {
+      "description": "Order id",
+      "type": "string"
+    },
+    "refund_method": {
+      "description": "Refund method",
+      "type": "string",
+      "enum": ["credit_card", "bank_slip", "bonus"]
+    },
+    "refund_status": {
+      "description": "Refund status",
+      "type": "string",
+      "enum": ["pending", "approved", "denied"]
+    },
+    "items": {
+      "description": "Items",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "description": "Item id",
+            "type": "string"
+          },
+          "item_name": {
+            "description": "Item name",
+            "type": "string"
+          },
+          "quantity": {
+            "description": "Item quantity",
+            "type": "number"
+          },
+          "refunds_description": {
+            "description": "Refund description",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "first_name",
+    "order_id",
+    "customer_id",
+    "refund_method",
+    "refund_status"
+  ],
+  "v-cache": false,
+  "v-indexed": ["order_id", "refund_status", "id", "customer_id"],
+  "v-immediate-indexing": true,
+  "v-security": {
+    "allowGetAll": true
+  }
+}

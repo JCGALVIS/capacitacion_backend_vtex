@@ -1,4 +1,6 @@
 import { IOClients } from '@vtex/api'
+import { masterDataFor } from '@vtex/clients'
+import type { Refunds } from 'vtex.service-example'
 
 import Status from './status'
 import OMS from './oms'
@@ -11,5 +13,9 @@ export class Clients extends IOClients {
 
   public get oms() {
     return this.getOrSet('oms', OMS)
+  }
+
+  public get refunds() {
+    return this.getOrSet('refunds', masterDataFor<Refunds>('refunds'))
   }
 }

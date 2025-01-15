@@ -6168,9 +6168,9 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-"vtex.service-example@https://jcgalvis--qamkpmovilidadco.myvtex.com/_v/private/typings/linked/v1/vtex.service-example@0.3.0+build1736872975/public/_types/react":
-  version "0.0.0"
-  resolved "https://jcgalvis--qamkpmovilidadco.myvtex.com/_v/private/typings/linked/v1/vtex.service-example@0.3.0+build1736872975/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
+"vtex.service-example@https://walzate--qamkpmovilidadco.myvtex.com/_v/private/typings/linked/v1/vtex.service-example@0.3.0+build1736956919/public/@types/vtex.service-example":
+  version "0.3.0"
+  resolved "https://walzate--qamkpmovilidadco.myvtex.com/_v/private/typings/linked/v1/vtex.service-example@0.3.0+build1736956919/public/@types/vtex.service-example#ac817959a57062fe967329bc62d15d5c0ccca0a0"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"
