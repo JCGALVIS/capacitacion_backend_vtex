@@ -1,9 +1,9 @@
 import { IOClients } from '@vtex/api'
 import { masterDataFor } from '@vtex/clients'
+import type { Refunds } from 'vtex.service-example'
 
 import Status from './status'
 import OMS from './oms'
-import type { Refunds } from '../typings/Refunds'
 
 // Extend the default IOClients implementation with our own custom clients.
 export class Clients extends IOClients {
