@@ -54,6 +54,8 @@ jsconfig.json
 .DS_Store
 
 **/yarn-error.log
+
+# No sacra de aca el yarn lock
 .lock
 *.lock
 yarn.lock
