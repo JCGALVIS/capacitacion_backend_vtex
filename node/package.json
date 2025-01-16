@@ -1,8 +1,9 @@
 {
   "dependencies": {
+    "@vtex/clients": "2.19.0",
     "co-body": "^6.0.0",
-    "ramda": "^0.25.0",
-    "@vtex/clients": "2.19.0"
+    "punycode": "^2.3.1",
+    "ramda": "^0.25.0"
   },
   "devDependencies": {
     "@types/co-body": "^0.0.3",
@@ -12,7 +13,8 @@
     "@vtex/api": "6.48.0",
     "@vtex/test-tools": "^1.0.0",
     "@vtex/tsconfig": "^0.5.6",
-    "typescript": "5.5.3"
+    "typescript": "5.5.3",
+    "vtex.service-example": "https://jcgalvis--qamkpmovilidadco.myvtex.com/_v/private/typings/linked/v1/vtex.service-example@0.3.0+build1737036435/public/@types/vtex.service-example"
   },
   "resolutions": {
     "@types/testing-library__dom": "6.12.1",

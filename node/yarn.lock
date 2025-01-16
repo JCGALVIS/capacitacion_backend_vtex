@@ -5084,6 +5084,11 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.0.tgz#f67fa67c94da8f4d0cfff981aee4118064199b8f"
   integrity sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==
 
+punycode@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
+  integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
+
 qs@^6.5.1, qs@^6.5.2:
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.0.tgz#fd0d963446f7a65e1367e01abd85429453f0c37a"
@@ -6167,6 +6172,10 @@ verror@1.10.0:
     assert-plus "^1.0.0"
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
+
+"vtex.service-example@https://jcgalvis--qamkpmovilidadco.myvtex.com/_v/private/typings/linked/v1/vtex.service-example@0.3.0+build1737036435/public/@types/vtex.service-example":
+  version "0.3.0"
+  resolved "https://jcgalvis--qamkpmovilidadco.myvtex.com/_v/private/typings/linked/v1/vtex.service-example@0.3.0+build1737036435/public/@types/vtex.service-example#85fd5eb1f3152246a778370372c4ccd1483102f0"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"
