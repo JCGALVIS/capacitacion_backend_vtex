@@ -6,6 +6,9 @@ import { status } from './middlewares/status'
 import { validate } from './middlewares/validate'
 import { getOrders } from './middlewares/oms/getOrders'
 import { orders } from './resolvers/oms/oms'
+import { getRefunds } from './middlewares/refunds/getRefunds'
+import { saveRefund } from './middlewares/refunds/saveRefund'
+import { updateRefund } from './middlewares/refunds/updateRefund'
 
 const TIMEOUT_MS = 800
 
@@ -49,5 +52,14 @@ export default new Service({
     orders: method({
       GET: [getOrders],
     }),
+    refunds: method({
+      GET: [getRefunds],
+    }),
+    createRefund: method({
+      POST: [saveRefund],
+    }),
+    updateRefund: method({
+      PUT: [updateRefund],
+    })
   },
 })
