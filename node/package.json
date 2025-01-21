@@ -14,7 +14,7 @@
     "@vtex/test-tools": "^1.0.0",
     "@vtex/tsconfig": "^0.5.6",
     "typescript": "5.5.3",
-    "vtex.service-example": "https://equipo4--qamkpmovilidadco.myvtex.com/_v/private/typings/linked/v1/vtex.service-example@0.3.0+build1737469845/public/@types/vtex.service-example"
+    "vtex.service-example": "https://walzate--qamkpmovilidadco.myvtex.com/_v/private/typings/linked/v1/vtex.service-example@0.3.0+build1736956919/public/@types/vtex.service-example"
   },
   "resolutions": {
     "@types/testing-library__dom": "6.12.1",

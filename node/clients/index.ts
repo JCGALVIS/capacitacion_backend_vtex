@@ -1,7 +1,8 @@
 import { IOClients } from '@vtex/api'
 import { masterDataFor } from '@vtex/clients'
-import type { Refunds } from 'vtex.service-example'
 
+// import type { Refunds } from 'vtex.service-example'
+import type { Refunds } from '../typings/Refunds'
 import Status from './status'
 import OMS from './oms'
 

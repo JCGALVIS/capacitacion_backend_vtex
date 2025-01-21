@@ -1,6 +1,8 @@
 import type { InstanceOptions, IOContext } from '@vtex/api'
 import { JanusClient } from '@vtex/api'
 
+import type { InvocieRequest } from '../typings/invoiceRequest'
+
 const basePath = '/api/oms/pvt'
 
 export default class OMS extends JanusClient {
@@ -26,6 +28,12 @@ export default class OMS extends JanusClient {
     })
   }
 
+  public async invoice(body: InvocieRequest, orderId: string): Promise<any> {
+    return this.http.post(this.routes.invoice(orderId), body, {
+      metric: 'invoice-order',
+    })
+  }
+
   private get routes() {
     return {
       getOrders: (email: string) => {
@@ -33,6 +41,9 @@ export default class OMS extends JanusClient {
       },
       getOrderById: (orderId: string) => {
         return `${basePath}/orders/${orderId}`
+      },
+      invoice: (orderId: string) => {
+        return `${basePath}/orders/${orderId}/invoice`
       },
     }
   }
