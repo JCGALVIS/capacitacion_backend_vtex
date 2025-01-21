@@ -5,13 +5,15 @@ export async function getOrders(
   ctx: Context,
   next: () => Promise<OrderDetailResponse>
 ) {
+  const email = ctx.query.email as string
+
   try {
-    const response = await omsService(ctx).getOrders()
+    const response = await omsService(ctx).getOrders(email)
 
     ctx.status = 200
     ctx.body = response
   } catch (error) {
-    console.error(error)
+    console.error(error.response)
 
     ctx.status = 400
     ctx.body = { message: error.message }

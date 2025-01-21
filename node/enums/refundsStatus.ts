@@ -1,5 +1,5 @@
 export enum RefundsStatus {
-    pending = "pending",
-    approved = "approved",
-    denied = "denied",
+  pending = 'pending',
+  approved = 'approved',
+  denied = 'denied',
 }

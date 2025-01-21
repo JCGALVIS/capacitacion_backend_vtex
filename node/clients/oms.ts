@@ -14,8 +14,8 @@ export default class OMS extends JanusClient {
     })
   }
 
-  public async getOrders(): Promise<any> {
-    return this.http.get(this.routes.getOrders(), {
+  public async getOrders(email: string): Promise<any> {
+    return this.http.get(this.routes.getOrders(email), {
       metric: 'get-orders',
     })
   }
@@ -28,11 +28,11 @@ export default class OMS extends JanusClient {
 
   private get routes() {
     return {
-      getOrders: () => {
-        return `${basePath}/orders`
+      getOrders: (email: string) => {
+        return `${basePath}/orders?q=${email}`
       },
       getOrderById: (orderId: string) => {
-        return `${basePath}/orders${orderId}`
+        return `${basePath}/orders/${orderId}`
       },
     }
   }

@@ -4,7 +4,7 @@ export const omsService = (ctx: Context) => {
   } = ctx
 
   return {
-    getOrders: async () => omsClient.getOrders(),
+    getOrders: async (email: string) => omsClient.getOrders(email),
     getOrdersById: async (orderId: string) => omsClient.getOrderById(orderId),
   }
 }
