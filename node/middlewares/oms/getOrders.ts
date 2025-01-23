@@ -6,9 +6,13 @@ export async function getOrders(
   next: () => Promise<OrderDetailResponse>
 ) {
   const email = ctx.query.email as string
+  const orderId = ctx.query.orderId as string
 
   try {
-    const response = await omsService(ctx).getOrders(email)
+    let response
+
+    if (email) response = await omsService(ctx).getOrders(email)
+    if (orderId) response = await omsService(ctx).getOrdersById(orderId)
 
     ctx.status = 200
     ctx.body = response

@@ -2,6 +2,24 @@ input OrderInput {
   orderId: String!
 }
 
+input RefundInput {
+  first_name: String
+  last_name: String
+  customer_id: Int
+  order_id: String
+  refund_method: String
+  refund_status: String
+  items: [ItemInput]
+}
+
+input ItemInput {
+  item_id: String
+  item_name: String
+  item_price: Int
+  quantity: Int
+  refunds_description: String
+}
+
 type Order {
   orderId: String
   status: String
@@ -20,6 +38,30 @@ type OrderItemDetail {
   quantity: Int
 }
 
+type Refund {
+  first_name: String
+  last_name: String
+  customer_id: Int
+  order_id: String
+  refund_method: String
+  refund_status: String
+  items: [Item]
+}
+
+type Item {
+  item_id: String
+  item_name: String
+  item_price: Int
+  quantity: Int
+  refunds_description: String
+}
+
 type Query {
-  orders: [OrderItemDetail]
+  orders(email: String): [OrderItemDetail]
+  refunds: [Refund]
+}
+
+type Mutation {
+  updateRefund(id: String): String
+  newRefunds(refund: RefundInput): Refund
 }

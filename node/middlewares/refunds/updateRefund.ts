@@ -1,14 +1,10 @@
-import { json } from "co-body"
-import { RefundsStatus } from "../../enums/refundsStatus"
+import { refundsService } from '../../services/refundsService'
 
-export async function updateRefund(ctx: Context, next: () => Promise<any>) {
-  const { req, clients: { refunds }, vtex: { route: { params } } } = ctx
-
-  const { id } = params as { id: string }
-  const body = await json(req) as { refund_status: RefundsStatus }
+export async function updateRefund(ctx: Context, next: () => Promise<string>) {
+  const id = ctx.query.id as string
 
   try {
-    const response = await refunds.update(id, body)
+    const response = await refundsService(ctx).updateRefunds(id)
 
     ctx.status = 200
     ctx.body = response

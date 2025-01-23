@@ -5,10 +5,11 @@ import { Clients } from './clients'
 import { status } from './middlewares/status'
 import { validate } from './middlewares/validate'
 import { getOrders } from './middlewares/oms/getOrders'
-import { orders } from './resolvers/oms/oms'
+import { orders } from './resolvers/orders/orders'
 import { getRefunds } from './middlewares/refunds/getRefunds'
 import { saveRefund } from './middlewares/refunds/saveRefund'
 import { updateRefund } from './middlewares/refunds/updateRefund'
+import { newRefunds } from './resolvers/refunds/newRefunds'
 
 const TIMEOUT_MS = 800
 
@@ -43,6 +44,9 @@ export default new Service({
       Query: {
         orders,
       },
+      Mutation: {
+        newRefunds,
+      },
     },
   },
   routes: {
@@ -60,6 +64,6 @@ export default new Service({
     }),
     updateRefund: method({
       PUT: [updateRefund],
-    })
+    }),
   },
 })

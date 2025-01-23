@@ -26,28 +26,28 @@ export interface Refunds {
   /**
    * Items
    */
-  items?: [
+  items: [
     {
       /**
        * Item id
        */
-      item_id?: string
+      item_id: string
       /**
        * Item name
        */
-      item_name?: string
+      item_name: string
       /**
        * Item price
        */
-      item_price?: number
+      item_price: number
       /**
        * Item quantity
        */
-      quantity?: number
+      quantity: number
       /**
        * Refund description
        */
-      refunds_description?: string
+      refunds_description: string
       [k: string]: unknown
     }
   ]

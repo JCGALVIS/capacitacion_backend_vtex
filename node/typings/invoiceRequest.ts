@@ -1,5 +1,5 @@
-export interface InvocieRequest {
-  type: string
+export interface InvoiceRequest {
+  type: 'Input' | 'Output'
   issuanceDate: Date
   invoiceNumber: string
   invoiceValue: string

@@ -1,4 +1,6 @@
+import type { InvoiceRequest } from '../typings/invoiceRequest'
 import type { Refunds } from '../typings/Refunds'
+import { omsService } from './omsService'
 
 export const refundsService = (ctx: Context) => {
   const {
@@ -9,7 +11,16 @@ export const refundsService = (ctx: Context) => {
   refundsClient.schema = `0.3.0-${workspace}`
 
   return {
-    save: async (refunds: Refunds) => refundsClient.save(refunds),
+    save: async (refund: Refunds) => {
+      try {
+        const response = await refundsClient.save(refund)
+
+        return response
+      } catch (error) {
+        console.error('error: ', error)
+        throw new Error(error)
+      }
+    },
     list: async () => refundsClient.scroll({ fields: ['_all'] }),
     getByRefundsStatus: async (refund_status: string) =>
       refundsClient.search(
@@ -31,25 +42,61 @@ export const refundsService = (ctx: Context) => {
         'createdIn DESC',
         `order_id=${orderId}`
       ),
-    updateRefunds: async (orderId: string) => {
-      // const REFUND_STATUS = 'approved'
-      const allRefundsByOrderId = await refundsClient.search(
-        {
-          page: 1,
-          pageSize: 1,
-        },
-        ['_all'],
-        'createdIn DESC',
-        `order_id=${orderId}`
-      )
+    updateRefunds: async (id: string) => {
+      const REFUND_STATUS = 'approved'
+      const responseRefund = (await refundsClient.get(id, ['_all'])) as Refunds
 
-      if (allRefundsByOrderId.length === 0) {
+      if (!responseRefund) {
         throw new Error('No refund found for this order')
       }
 
-      // const { id, orderItems } = allRefundsByOrderId[0];
+      const {
+        first_name: firstName,
+        last_name: lastName,
+        customer_id: customerId,
+        order_id: orderId,
+        refund_method: refundMethod,
+        items,
+      } = responseRefund
 
-      // refundsClient.update(, { refund_status: REFUND_STATUS })
+      const totalValues = items?.reduce(
+        (sum, item) => sum + item.item_price * item.quantity,
+        0
+      )
+
+      const bodyInvoice: InvoiceRequest = {
+        type: 'Input',
+        issuanceDate: new Date(),
+        invoiceNumber: '001',
+        invoiceValue: totalValues.toString(),
+        items: items.map(({ item_id, item_price, item_name, quantity }) => ({
+          id: item_id,
+          price: item_price,
+          description: item_name,
+          quantity,
+        })),
+      }
+
+      const responseInvoice = await omsService(ctx).invoice(
+        bodyInvoice,
+        orderId
+      )
+
+      if (!responseInvoice) throw new Error('Error invoice')
+
+      responseRefund.refund_status = REFUND_STATUS
+
+      await refundsClient.update(id, {
+        first_name: firstName,
+        last_name: lastName,
+        customer_id: customerId,
+        order_id: orderId,
+        refund_method: refundMethod,
+        refund_status: REFUND_STATUS,
+        items,
+      })
+
+      return 'Ok'
     },
   }
 }

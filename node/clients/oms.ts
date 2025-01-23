@@ -1,7 +1,7 @@
 import type { InstanceOptions, IOContext } from '@vtex/api'
 import { JanusClient } from '@vtex/api'
 
-import type { InvocieRequest } from '../typings/invoiceRequest'
+import type { InvoiceRequest } from '../typings/invoiceRequest'
 
 const basePath = '/api/oms/pvt'
 
@@ -11,7 +11,7 @@ export default class OMS extends JanusClient {
       ...options,
       headers: {
         ...options?.headers,
-        VtexIdclientAutCookie: context.adminUserAuthToken ?? context.authToken,
+        VtexIdclientAutCookie: context.authToken,
       },
     })
   }
@@ -28,7 +28,7 @@ export default class OMS extends JanusClient {
     })
   }
 
-  public async invoice(body: InvocieRequest, orderId: string): Promise<any> {
+  public async invoice(body: InvoiceRequest, orderId: string): Promise<any> {
     return this.http.post(this.routes.invoice(orderId), body, {
       metric: 'invoice-order',
     })
